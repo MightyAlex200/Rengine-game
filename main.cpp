@@ -42,15 +42,31 @@ int main(){
     if(Keyboard::isKeyPressed(Keyboard::Down)){
       player->move(0,walkspeed);
     }
+    if(Keyboard::isKeyPressed(Keyboard::Space)){
+      RectangleShape* bullet = new RectangleShape(Vector2f(5,5));
+      bullet->setPosition(player->getPosition()+Vector2f(22.5,22.5));
+      objects.push_back(bullet);
+    }
 
     mainwindow.clear();
 
     for(RectangleShape* s : objects){
-      mainwindow.draw(*s);
+      if(s->getSize() == Vector2f(5,5)){
+        s->move(0,-5);
+      }
+      if(s->getPosition().y < 0){
+        objects.erase(std::remove(objects.begin(), objects.end(), s), objects.end());;
+      }else{
+        mainwindow.draw(*s);
+      }
     }
 
     mainwindow.display();
 
+  }
+
+  for(RectangleShape* s : objects){
+    delete s;
   }
 
   return 0;
