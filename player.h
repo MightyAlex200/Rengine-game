@@ -2,6 +2,7 @@
 #define PLAYER_H_
 
 #include "entity.h"
+#include "bullet.h"
 
 class Player : public Entity{
 public:
@@ -9,7 +10,7 @@ public:
   void draw(sf::RenderWindow* window);
   void update();
   sf::RectangleShape* shape;
-  std::vector<Entity> bullets;
+  std::vector<Bullet*> bullets;
   float walkspeed = 0.02;
 };
 

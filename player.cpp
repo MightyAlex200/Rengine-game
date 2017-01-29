@@ -7,6 +7,9 @@ Player::Player(int x, int y, int width, int height){
 
 void Player::draw(sf::RenderWindow* window){
   window->draw(*shape);
+  for(Bullet* b : bullets){
+    b->draw(window);
+  }
 }
 
 void Player::update(){
@@ -23,6 +26,12 @@ void Player::update(){
     shape->move(0,walkspeed);
   }
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-    //TODO: Make bullet
+    bullets.push_back(new Bullet(shape->getPosition().x, shape->getPosition().y));
+  }
+  for(Bullet* b : bullets){
+    b->update();
+    if(b->shape->getPosition().y < 0){
+      bullets.erase(std::remove(bullets.begin(), bullets.end(), b), bullets.end());
+    }
   }
 }

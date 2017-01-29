@@ -6,7 +6,7 @@
 class Entity{
 public:
   void update();
-  void draw(sf::RenderWindow window);
+  void draw(sf::RenderWindow* window);
 };
 
 #endif /* end of include guard: ENTITY_H_ */
