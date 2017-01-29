@@ -6,12 +6,13 @@
 
 class Player : public Entity{
 public:
-  Player(int x, int y, int width, int height);
+  Player(int x, int y);
   void draw(sf::RenderWindow* window);
   void update();
   sf::RectangleShape* shape;
   std::vector<Bullet*> bullets;
-  float walkspeed = 0.02;
+  sf::Clock bulletClock;
+  float walkspeed = 0.1;
 };
 
 #endif /* end of include guard: PLAYER_H_ */

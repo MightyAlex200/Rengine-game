@@ -1,7 +1,7 @@
 #include "player.h"
 
-Player::Player(int x, int y, int width, int height){
-  shape = new sf::RectangleShape(sf::Vector2f(width, height));
+Player::Player(int x, int y){
+  shape = new sf::RectangleShape(sf::Vector2f(50,50));
   shape->setPosition(sf::Vector2f(x,y));
 }
 
@@ -26,7 +26,10 @@ void Player::update(){
     shape->move(0,walkspeed);
   }
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-    bullets.push_back(new Bullet(shape->getPosition().x, shape->getPosition().y));
+    if(bulletClock.getElapsedTime().asSeconds() > 0.1){
+      bullets.push_back(new Bullet(shape->getPosition().x+22.5, shape->getPosition().y+22.5));
+      bulletClock.restart();
+    }
   }
   for(Bullet* b : bullets){
     b->update();

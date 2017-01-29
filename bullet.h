@@ -9,7 +9,7 @@ public:
   void draw(sf::RenderWindow* window);
   void update();
   sf::RectangleShape* shape;
-  float speed = 2;
+  float speed = .2;
 };
 
 #endif /* end of include guard: BULLET_H_ */
