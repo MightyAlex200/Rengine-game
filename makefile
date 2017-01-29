@@ -1,19 +1,19 @@
-default:Rengine
+default: Rengine.run
 
-Rengine: main.o player.o bullet.o enemy.o
-	g++ main.o player.o bullet.o enemy.o -o Rengine.run -lsfml-graphics	-lsfml-window -lsfml-system
+Rengine.run: main.o player.o bullet.o enemy.o
+	g++ $^ -o $@ -lsfml-graphics -lsfml-window -lsfml-system
 
-main.o:
-	g++ -c main.cpp
+main.o: main.cpp
+	g++ -c $^
 
-player.o:
-	g++ -c player.cpp
+player.o: player.cpp
+	g++ -c $^
 
-bullet.o:
-	g++ -c bullet.cpp
+bullet.o: bullet.cpp
+	g++ -c $^
 
-enemy.o:
-	g++ -c enemy.cpp
+enemy.o: enemy.cpp
+	g++ -c $^
 
 clean:
 	rm -f *.o *.gch Rengine.run
