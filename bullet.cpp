@@ -11,7 +11,4 @@ void Bullet::draw(sf::RenderWindow* window){
 
 void Bullet::update(){
   shape->move(0,-speed);
-  if(shape->getPosition().y < 0){
-    
-  }
 }
