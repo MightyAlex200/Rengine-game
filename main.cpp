@@ -30,11 +30,15 @@ int main(){
 
     if(enemyClock.getElapsedTime().asSeconds() > 2){
       Enemy* e = new Enemy(0,0);
+      e->shape->setPosition(rand()%640,0);
       enemies.push_back(e);
       enemyClock.restart();
     }
 
     myPlayer.update();
+    for(Enemy* e : enemies){
+      e->update(myPlayer.bullets, enemies);
+    }
 
     mainwindow.clear();
     myPlayer.draw(&mainwindow);

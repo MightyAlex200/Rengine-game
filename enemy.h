@@ -2,13 +2,15 @@
 #define ENEMY_H_
 
 #include "entity.h"
+#include "bullet.h"
 
 class Enemy : public Entity{
 public:
   Enemy(int x, int y);
   sf::RectangleShape* shape;
   void draw(sf::RenderWindow* window);
-  void update();
+  void update(std::vector<Bullet*> bullets, std::vector<Enemy*>& enemies);
+  float speed = 0.05;
 };
 
 #endif /* end of include guard: ENEMY_H_ */
