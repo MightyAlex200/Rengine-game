@@ -1,6 +1,7 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+#include <SFML/Audio.hpp>
 #include "entity.h"
 #include "bullet.h"
 
@@ -13,6 +14,8 @@ public:
   std::vector<Bullet*> bullets;
   sf::Clock bulletClock;
   float walkspeed = 0.1;
+  sf::SoundBuffer shootSoundBuffer;
+  sf::Sound shootSound;
 };
 
 #endif /* end of include guard: PLAYER_H_ */

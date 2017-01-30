@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <iostream>
 #include "player.h"
@@ -28,7 +29,7 @@ int main(){
       }
     }
 
-    if(enemyClock.getElapsedTime().asSeconds() > 2){
+    if(enemyClock.getElapsedTime().asSeconds() > .5){
       Enemy* e = new Enemy(0,0);
       e->shape->setPosition(rand()%640,0);
       enemies.push_back(e);

@@ -1,7 +1,7 @@
 default: Rengine.run
 
 Rengine.run: main.o player.o bullet.o enemy.o
-	g++ $^ -o $@ -lsfml-graphics -lsfml-window -lsfml-system
+	g++ $^ -o $@ -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 main.o: main.cpp
 	g++ -c $^

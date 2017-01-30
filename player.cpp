@@ -3,6 +3,8 @@
 Player::Player(int x, int y){
   shape = new sf::RectangleShape(sf::Vector2f(50,50));
   shape->setPosition(sf::Vector2f(x,y));
+  shootSoundBuffer.loadFromFile("shoot.wav");
+  shootSound.setBuffer(shootSoundBuffer);
 }
 
 void Player::draw(sf::RenderWindow* window){
@@ -27,6 +29,7 @@ void Player::update(){
   }
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
     if(bulletClock.getElapsedTime().asSeconds() > 0.1){
+      shootSound.play();
       bullets.push_back(new Bullet(shape->getPosition().x+22.5, shape->getPosition().y+22.5));
       bulletClock.restart();
     }
