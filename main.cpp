@@ -15,6 +15,8 @@ int main(){
   Player myPlayer(295,430);
   Clock enemyClock;
   std::vector<Enemy*> enemies;
+  SoundBuffer dieSoundBuffer;
+  dieSoundBuffer.loadFromFile("explosion.wav");
 
   while(mainwindow.isOpen()){
     Event e;
@@ -30,7 +32,7 @@ int main(){
     }
 
     if(enemyClock.getElapsedTime().asSeconds() > .5){
-      Enemy* e = new Enemy(0,0);
+      Enemy* e = new Enemy(0,0,dieSoundBuffer);
       e->shape->setPosition(rand()%640,0);
       enemies.push_back(e);
       enemyClock.restart();

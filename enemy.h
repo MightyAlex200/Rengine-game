@@ -7,12 +7,12 @@
 
 class Enemy : public Entity{
 public:
-  Enemy(int x, int y);
+  Enemy(int x, int y, sf::SoundBuffer& dieSoundBuffer);
   sf::RectangleShape* shape;
   void draw(sf::RenderWindow* window);
   void update(std::vector<Bullet*> bullets, std::vector<Enemy*>& enemies);
   float speed = 0.05;
-  sf::SoundBuffer dieSoundBuffer;
+  // sf::SoundBuffer dieSoundBuffer;
   sf::Sound dieSound;
 };
 

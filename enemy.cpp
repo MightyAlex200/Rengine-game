@@ -1,11 +1,11 @@
 #include "enemy.h"
 #include <iostream>
 
-Enemy::Enemy(int x, int y){
+Enemy::Enemy(int x, int y, sf::SoundBuffer& dieSoundBuffer){
   shape = new sf::RectangleShape(sf::Vector2f(50,50));
   shape->setPosition(x,y);
   shape->setFillColor(sf::Color::Blue);
-  dieSoundBuffer.loadFromFile("explosion.wav");
+  // dieSoundBuffer.loadFromFile("explosion.wav");
   dieSound.setBuffer(dieSoundBuffer);
 }
 
