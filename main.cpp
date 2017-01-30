@@ -12,11 +12,24 @@ using namespace sf;
 int main(){
 
   RenderWindow mainwindow(VideoMode(640,480), "Rengine");
+
+  Texture playerTexture;
+  playerTexture.loadFromFile("player.png");
   Player myPlayer(295,430);
+  myPlayer.shape->setTexture(&playerTexture);
+
   Clock enemyClock;
+
   std::vector<Enemy*> enemies;
   SoundBuffer dieSoundBuffer;
   dieSoundBuffer.loadFromFile("explosion.wav");
+  Texture enemyTexture;
+  enemyTexture.loadFromFile("enemy.png");
+
+  Texture bgTexture;
+  bgTexture.loadFromFile("background.png");
+  RectangleShape background(Vector2f(640,480));
+  background.setTexture(&bgTexture);
 
   while(mainwindow.isOpen()){
     Event e;
@@ -34,6 +47,7 @@ int main(){
     if(enemyClock.getElapsedTime().asSeconds() > .5){
       Enemy* e = new Enemy(0,0,dieSoundBuffer);
       e->shape->setPosition(rand()%640,0);
+      e->shape->setTexture(&enemyTexture);
       enemies.push_back(e);
       enemyClock.restart();
     }
@@ -44,6 +58,7 @@ int main(){
     }
 
     mainwindow.clear();
+    mainwindow.draw(background);
     myPlayer.draw(&mainwindow);
     for(Enemy* e : enemies){
       e->draw(&mainwindow);
