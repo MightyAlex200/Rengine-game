@@ -46,7 +46,7 @@ int main(){
 
     if(enemyClock.getElapsedTime().asSeconds() > .5){
       Enemy* e = new Enemy(0,0,dieSoundBuffer);
-      e->shape->setPosition(rand()%640,0);
+      e->shape->setPosition(rand()%590,0);
       e->shape->setTexture(&enemyTexture);
       enemies.push_back(e);
       enemyClock.restart();

@@ -8,10 +8,10 @@ Player::Player(int x, int y){
 }
 
 void Player::draw(sf::RenderWindow* window){
-  window->draw(*shape);
   for(Bullet* b : bullets){
     b->draw(window);
   }
+  window->draw(*shape);
 }
 
 void Player::update(){
