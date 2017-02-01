@@ -6,7 +6,7 @@ Enemy::Enemy(int x, int y, sf::SoundBuffer& dieSoundBuffer){
   shape->setPosition(x,y);
   // shape->setFillColor(sf::Color::Blue);
   // dieSoundBuffer.loadFromFile("explosion.wav");
-  dieSound.setBuffer(dieSoundBuffer);
+  // dieSound.setBuffer(dieSoundBuffer);
 }
 
 void Enemy::draw(sf::RenderWindow* window){

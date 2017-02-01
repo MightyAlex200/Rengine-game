@@ -26,6 +26,9 @@ int main(){
   Texture enemyTexture;
   enemyTexture.loadFromFile("enemy.png");
 
+  Sound debugSound;
+  debugSound.setBuffer(dieSoundBuffer);
+
   Texture bgTexture;
   bgTexture.loadFromFile("background.png");
   RectangleShape background(Vector2f(640,480));
@@ -44,10 +47,15 @@ int main(){
       }
     }
 
+    if(Keyboard::isKeyPressed(Keyboard::E)){
+      //debugSound.play();
+    }
+
     if(enemyClock.getElapsedTime().asSeconds() > .5){
       Enemy* e = new Enemy(0,0,dieSoundBuffer);
       e->shape->setPosition(rand()%590,0);
       e->shape->setTexture(&enemyTexture);
+      e->dieSound.setBuffer(dieSoundBuffer);
       enemies.push_back(e);
       enemyClock.restart();
     }
