@@ -1,19 +1,21 @@
+cc = g++
+
 default: Rengine.run
 
 Rengine.run: main.o player.o bullet.o enemy.o
-	g++ $^ -o $@ -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+	$(cc) $^ -o $@ -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 main.o: main.cpp
-	g++ -c $^
+	$(cc) -c $^
 
 player.o: player.cpp
-	g++ -c $^
+	$(cc) -c $^
 
 bullet.o: bullet.cpp
-	g++ -c $^
+	$(cc) -c $^
 
 enemy.o: enemy.cpp
-	g++ -c $^
+	$(cc) -c $^
 
 clean:
 	rm -f *.o *.gch Rengine.run
